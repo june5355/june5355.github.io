@@ -1,0 +1,771 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="UTF-8">
+<title>대무의도의 낙조 — Scenery | JUNEssay</title>
+<meta name="description" content="1990년부터 한국의 풍경과 일상을 기록해 온 사진가 장정대의 개인 홈페이지입니다. 서정적인 시선이 담긴 사진 갤러리와 작품 아카이브를 만나보세요.">
+<meta name="keywords" content="장정대, 사진가 장정대, 한국 사진가, 사진작가, 한국 사진작가, 개인 사진전, 거리 사진, 스냅 사진, 풍경 사진, 추상 사진, 사진 갤러리, 사진 아카이브">  
+<meta property="og:type" content="website">
+<meta property="og:title" content="사진가 장정대 공식 홈페이지">
+<meta property="og:description" content="1990년부터 기록해 온 한국 거리 사진가 장정대의 사진 아카이브">
+<title>Scenery — GALLERY A_ | JUNEssay</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" as="style" crossorigin href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/variable/pretendardvariable.css" />
+<style>
+  @font-face{
+    font-family: 'Modern No. 20';
+    src: url('../assets/fonts/MOD20.ttf') format('truetype');
+    font-weight: 400;
+    font-display: swap;
+  }
+  @font-face{
+    font-family: '3 of 9 Barcode';
+    src: url('../assets/fonts/3of9barcode.ttf') format('truetype');
+    font-weight: 400;
+    font-display: swap;
+  }
+
+  :root{
+    --bg: #0A070E;
+    --ink: #c6c5c5;
+    --ink-soft: #a5a4a4;
+    --ink-faint: #6f6e6e;
+    --red: #ff2d20;
+    --blue: #5c92a0;
+    --orange: #e46c0a;
+    --gold: #f6a42f;
+    --line: #4d4c4c;
+    --serif-en: 'Modern No. 20', serif;
+    --sans: 'Pretendard Variable', 'Pretendard', -apple-system, sans-serif;
+  }
+
+  *{ box-sizing: border-box; margin:0; padding:0; }
+
+  body{
+    background: var(--bg);
+    color: var(--ink-soft);
+    font-family: var(--sans);
+    line-height: 1.6;
+    -webkit-font-smoothing: antialiased;
+  }
+
+  a{ color: inherit; text-decoration: none; }
+  a:focus-visible{ outline: 1px solid var(--ink); outline-offset: 3px; }
+
+  .page{ max-width: 1200px; margin: 0 auto; padding: 0 clamp(18px, 3vw, 40px); }
+
+  .rule{ height: 1px; background: var(--line); border: none; }
+
+  /* ================= TOP BAR ================= */
+  .topbar{
+    display:flex; justify-content: space-between; align-items:center;
+    padding: 22px 0 3px;
+    font-size: 0.82rem;
+  }
+  .topnav{ display:flex; gap: 28px; }
+  .topnav a:hover{ color: var(--ink); }
+  .credit-line{ letter-spacing: 0.06em; color: var(--ink-faint); font-size: 0.78rem; }
+
+  /* ================= HERO ================= */
+  .hero{
+    display: grid;
+    grid-template-columns: 1fr auto 1fr;
+    gap: clamp(20px, 4vw, 28px);
+    padding: clamp(10px, 2vw, 20px) 0 clamp(10px, 2vw, 40px);
+  }
+
+  .hero-left p{ font-size: 0.95rem; }
+  .hero-left .q-bold{ font-weight: 700; color: var(--ink); margin-bottom: 4px; }
+  .hero-left .story-block{ margin-bottom: 20px; }
+  .hero-left .credit{ padding-bottom: 4px; display:inline-block; position: relative; }
+  .hero-left .credit::after{
+    content:"";
+    position: absolute; left:0; bottom:0;
+    width:100%; height:1px;
+    background: var(--line);
+    transform: scaleX(1.2);
+    transform-origin: left;
+  }
+  .hero-left .credit p:first-child b{ color: var(--ink); font-weight: 700; }
+  .hero-left .credit p{ font-size: 0.85rem; }
+  .hero-left .credit b{ font-weight: 700; }
+
+  .hero-center{ text-align: center; align-self: end; }
+  .hero-center .word-june{
+    font-family: var(--serif-en); font-weight: 400;
+    font-size: 98pt;
+    letter-spacing: 0.01em; color: var(--ink); line-height: 0.9;
+  }
+  .hero-center .word-sub{
+    font-family: var(--serif-en); font-weight: 400;
+    font-size: 26pt;
+    letter-spacing: 0.14em; color: var(--ink); margin-top: -28px;
+  }
+
+  .hero-right{ text-align: right; align-self: end; }
+  .hero-right .vol{ font-family: var(--serif-en); font-size: 15pt; letter-spacing: 0.08em; color: var(--ink); transform: translateY(52%); }
+  .hero-right .vol-num{ font-family: var(--serif-en); font-weight: 400; font-size: 45pt; margin-left: 3px; }
+  .barcode-text{
+    font-family: '3 of 9 Barcode', monospace;
+    font-size: 30pt;
+    letter-spacing: 0.04em;
+    color: var(--ink);
+    text-align: right;
+    margin-top: 10px;
+  }
+
+  /* ================= ABOUT BLOCK (Snap page intro) ================= */
+  .about-block{ padding: 0; }
+
+  .about-welcome{
+    font-size: clamp(1.1rem, 2vw, 1.3rem);
+    font-weight: 700;
+    color: var(--gold);
+    margin-bottom: -16px;    
+    line-height: 0.3;          
+  }
+
+  .about-row{
+    display: grid; grid-template-columns: 1fr auto auto;
+    align-items: center;
+    gap: clamp(20px, 4vw, 40px);
+  }
+
+  .about-social{ display:flex; gap: 16px; align-items:center; align-self: end; }
+  .about-social a{ color: var(--ink-soft); display:flex; transition: color .2s ease; }
+  .about-social a:hover{ color: var(--ink); }
+  .about-social svg{ width:22px; height:22px; display:block; }
+
+  .about-bio-title{ 
+    font-size: 1.2rem; 
+    color: var(--ink); 
+    margin-bottom: 0; 
+    line-height: 1.0;         
+  }
+
+  .about-bio-title b{ font-weight: 700; }
+
+  .about-bio-quote{ 
+    font-size: 0.95rem; 
+    color: var(--ink-soft); 
+    line-height: 1.3;
+    margin-top: 2px;
+  }
+
+  .about-photo{
+    width: 150px; height: 150px; border-radius: 50%;
+    overflow: hidden; flex-shrink: 0; border: 1px solid var(--line);
+  }
+  .about-photo img{ width:100%; height:100%; object-fit: cover; display:block; }
+
+  /* ================= BREADCRUMB ================= */
+  .breadcrumb{
+    padding: clamp(1px, 3vw, 4px) 0 2px;
+    font-size: 0.92rem; font-weight: 700; color: var(--ink);
+  }
+  .breadcrumb a:hover{ color: var(--blue); }
+  .breadcrumb .sep{ color: var(--ink-faint); font-weight: 400; margin: 0 6px; }
+
+
+  /* ================= ENTRY ================= */
+  .entry{
+    display: grid; grid-template-columns: 0.95fr 1.05fr;
+    gap: clamp(24px, 4vw, 48px);
+    padding: clamp(28px, 4vw, 40px) 0;
+    align-items: start;
+  }
+  .entry-media img{ display:block; width:100%; height:auto; border: 1px solid var(--line); }
+  .media-trigger{
+    display:block; width:100%; padding:0; margin:0; border:none; background:none; cursor: zoom-in;
+  }
+
+  /* 본문 사진 호버 반응: 기본은 원본 → 마우스를 올리면 살짝 차분하게 변화 (터치 기기는 제외) */
+  @media (hover: hover){
+    .entry-media img{ transition: filter .5s ease; }
+    .media-trigger:hover img,
+    .media-trigger:focus-visible img{ filter: contrast(.88) saturate(.8) brightness(1.04); }
+  }
+
+  /* ================= LIGHTBOX ================= */
+  .lightbox{
+    position: fixed; inset:0; background: rgba(6,6,6,0.92);
+    display:none; align-items:center; justify-content:center;
+    z-index: 100; padding: 24px; cursor: zoom-out;
+    overflow: auto;
+  }
+  .lightbox.open{ display:flex; }
+  .lightbox.zoomed-view{ align-items: flex-start; justify-content: flex-start; }
+  .lightbox img{
+    max-width: 100%; max-height: 100%;
+    width:auto; height:auto;
+    display:block;
+    filter: blur(24px);
+    opacity: 0;
+    cursor: zoom-in;
+    transition: filter 1.5s ease, opacity 1.5s ease;
+  }
+  .lightbox img.show{ filter: blur(0); opacity: 1; }
+  .lightbox img.zoomed{ max-width: none; max-height: none; cursor: zoom-out; }
+  .lightbox-close{
+    position:absolute; top:20px; right:28px;
+    width:40px; height:40px;
+    color: var(--ink); font-size:1.8rem; line-height:1;
+    background:none; border:1px solid var(--line); border-radius:50%;
+    cursor:pointer;
+  }
+  .lightbox-close:hover{ color: var(--bg); background: var(--ink); }
+
+  .entry-tag{ font-size: 0.95rem; color: var(--ink-soft); margin-bottom: clamp(18px, 3vw, 26px); }
+
+  .essay h2{ font-family: var(--sans); font-weight: 700; font-size: clamp(1.05rem, 2vw, 1.2rem); color: var(--ink); margin-bottom: 14px; }
+  .essay h2 a:hover{ color: var(--blue); }
+  .essay p{ font-size: 0.95rem; line-height: 1.4; }
+  .essay p + p{ margin-top: 16px; }
+
+  .keywords{
+    margin-top: clamp(20px, 3vw, 28px);
+    padding-top: 14px;
+    border-top: 1px solid var(--line);
+    font-size: 0.82rem;
+    color: var(--ink-faint);
+    font-weight: 700;
+  }
+
+  .meta{
+    margin-top: 14px; padding-top: 16px; border-top: 1px solid var(--line);
+    display: grid; grid-template-columns: auto 1fr; row-gap: 0px; column-gap: 10px;
+    font-size: 0.82rem;
+  }
+  .meta dt{ font-weight: 400; color: var(--ink); white-space: pre; }
+  .meta dd{ color: var(--ink-soft); }
+  .meta dd a{ color: var(--blue); border-bottom: 1px solid var(--blue); }
+
+  /* ================= SNAP GALLERY STRIP ================= */
+  .snap-strip{ padding: clamp(20px, 3vw, 32px) 0 clamp(32px, 5vw, 48px); }
+  .snap-strip h3{ font-size: 0.98rem; font-weight: 700; color: var(--ink); margin-bottom: 16px; }
+  .snap-strip h3 a:hover{ color: var(--blue); }
+  .thumb-row{
+    display: grid; grid-template-columns: repeat(8, 1fr);
+    gap: clamp(4px, 0.8vw, 8px);
+  }
+  .thumb-row a{ position: relative; display:block; aspect-ratio: 1/1; overflow: hidden; }
+  .thumb-row img{ width:100%; height:100%; object-fit: cover; display:block; filter: brightness(0.92); transition: filter .2s ease; }
+  .thumb-row a:hover img{ filter: brightness(1.1); }
+  .thumb-row a.is-active img{ filter: brightness(1.1); outline: 2px solid var(--gold); outline-offset: -2px; }
+
+  /* 썸네일 호버 캡션: 마우스를 올리면 제목·날짜 표시 (터치 기기는 제외) */
+@media (hover: hover){
+  .media-trigger{ overflow: hidden; }
+  .entry-media img{ transition: transform .8s cubic-bezier(.2,.7,.2,1), filter .8s ease; }
+  .media-trigger:hover img,
+  .media-trigger:focus-visible img{ transform: scale(1.08); filter: saturate(1.3) contrast(1.1) brightness(1.08); }
+}
+  .thumb-cap{
+    position:absolute; inset:0;
+    display:flex; flex-direction:column; justify-content:flex-end;
+    padding: 8px;
+    background: linear-gradient(to top, rgba(0,0,0,.75), rgba(0,0,0,0) 60%);
+    opacity: 0;
+    transition: opacity .2s ease;
+    pointer-events: none;
+  }
+  .thumb-cap-title{
+    font-size: clamp(0.74rem, 1.1vw, 0.88rem); font-weight:700; line-height:1.45;
+    color: var(--ink);
+    text-decoration: underline; text-underline-offset: 3px; word-break: keep-all;
+    display:-webkit-box; -webkit-line-clamp:4; -webkit-box-orient:vertical; overflow:hidden;
+  }
+  .thumb-cap-date{ font-size: clamp(0.66rem, 0.95vw, 0.78rem); color: var(--ink-faint); }
+  @media (hover: hover){
+    .thumb-row a:hover .thumb-cap, .thumb-row a:focus-visible .thumb-cap{ opacity:1; }
+  }
+  .thumb-pagination{
+    display:flex; justify-content:center; align-items:center; gap: 40px;
+    margin-top: clamp(16px, 2.5vw, 24px);
+  }
+  .thumb-pagination button{
+    background:none; border:none; color: var(--ink-soft);
+    font-size: 0.88rem; letter-spacing: 0.04em;
+    cursor:pointer; padding: 6px 4px;
+    transition: color 0.2s ease;
+  }
+  .thumb-pagination button:hover:not(:disabled){ color: var(--ink); }
+  .thumb-pagination button:disabled{ opacity: 0.35; cursor: default; }
+
+  /* ================= FOOTER ================= */
+  footer{
+    border-top: 1px solid var(--line);
+    padding: 5px 0 40px;
+    display:flex; justify-content: space-between; align-items:center;
+    flex-wrap: wrap; gap: 12px;
+    font-size: 0.78rem; color: var(--ink-faint);
+  }
+  .footer-nav{ display:flex; gap: 22px; }
+  .footer-nav a:hover{ color: var(--ink); }
+
+  @media (max-width: 860px){
+    .hero{ grid-template-columns: 1fr; text-align: left; }
+    .hero-center, .hero-right{ text-align: left; }
+    .barcode{ justify-content: flex-start; }
+    .about-row{ grid-template-columns: 1fr; }
+    .about-photo{ width: 110px; height: 110px; }
+    .entry{ grid-template-columns: 1fr; }
+    .thumb-row{ grid-template-columns: repeat(4, 1fr); }
+    .topbar{ flex-direction: column; align-items: flex-start; gap: 10px; }
+  }
+  @media (max-width: 480px){
+    .thumb-row{ grid-template-columns: repeat(3, 1fr); }
+  }
+
+  /* ================= CONTACT MODAL ================= */
+  .contact-modal{
+    position: fixed; inset:0; background: rgba(6,6,6,0.92);
+    display:none; align-items:center; justify-content:center;
+    z-index: 110; padding: 24px; overflow:auto;
+  }
+  .contact-modal.open{ display:flex; }
+  .contact-box{
+    position:relative; width:100%; max-width:480px;
+    background: var(--bg); border:1px solid var(--line);
+    padding: clamp(22px, 4vw, 32px);
+  }
+  .contact-box h2{ font-size:1.05rem; font-weight:700; color: var(--ink); margin-bottom:6px; }
+  .contact-desc{ font-size:0.82rem; color: var(--ink-faint); margin-bottom:8px; }
+  .contact-box label{ display:block; font-size:0.82rem; color: var(--ink); margin:14px 0 6px; }
+  .contact-box input[type="text"],
+  .contact-box input[type="email"],
+  .contact-box textarea{
+    width:100%; background:transparent; color: var(--ink);
+    border:1px solid var(--line); border-radius:0;
+    font: inherit; font-size:0.9rem; padding:10px 12px;
+  }
+  .contact-box textarea{ min-height:140px; resize:vertical; }
+  .contact-box input:focus, .contact-box textarea:focus{ outline:none; border-color: var(--blue); }
+  .contact-actions{ margin-top:20px; display:flex; align-items:center; gap:14px; flex-wrap:wrap; }
+  .contact-submit{
+    background: var(--ink); color: var(--bg); border:1px solid var(--ink);
+    padding:10px 24px; font: inherit; font-size:0.85rem; font-weight:700; cursor:pointer;
+  }
+  .contact-submit:hover{ background: transparent; color: var(--ink); }
+  .contact-submit:disabled{ opacity:.5; cursor:default; }
+  .contact-status{ font-size:0.82rem; color: var(--ink-faint); }
+  .contact-status.ok{ color: var(--blue); }
+  .contact-status.err{ color: var(--red); }
+  .contact-close{
+    position:absolute; top:10px; right:12px; width:32px; height:32px;
+    color: var(--ink); font-size:1.4rem; line-height:1;
+    background:none; border:1px solid var(--line); border-radius:50%; cursor:pointer;
+  }
+  .contact-close:hover{ color: var(--bg); background: var(--ink); }
+</style>
+</head>
+<body>
+
+<div class="page">
+
+  <div class="topbar">
+    <nav class="topnav" aria-label="상단 메뉴">
+      <a href="../index.html">Home</a>
+      <a href="../gallery-a.html">GALLERY A_</a>
+      <a href="../snap.html">Snap</a>
+      <a href="../scenery.html">Scenery</a>
+      <a href="../abstract.html">Abstract</a>
+      <a href="https://blog.naver.com/jd_photographer" target="_blank" rel="noopener noreferrer">Blog</a>
+    </nav>
+    <span class="credit-line">REPUBLIC OF KOREA · PHOTOGRAPHER</span>
+  </div>
+  <hr class="rule">
+
+  <header class="hero">
+    <div class="hero-left">
+      <div class="story-block">
+        <p>The Story</p>
+        <p class="q-bold">무엇을 담을 것인가?</p>
+        <p>Storytelling</p>
+        <p class="q-bold">어떻게 담을 것인가?</p>
+      </div>
+      <div class="credit">
+        <p><b>Photo</b> Essay Gallery</p>
+        <p>Street photographer <b>JUN</b></p>
+      </div>
+    </div>
+
+    <div class="hero-center">
+      <p class="word-june">JUNE</p>
+      <p class="word-sub">PHOTO GRAPHIC</p>
+    </div>
+
+    <div class="hero-right">
+      <p class="vol">VOL.<span class="vol-num">01</span></p>
+      <p class="barcode-text" aria-hidden="true">*JUNGALLERY*</p>
+    </div>
+  </header>
+
+  <section class="about-block" aria-label="갤러리 소개">
+    <p class="about-welcome">Welcome to the online photography exhibition.</p>
+    <div class="about-row">
+      <div class="about-bio">
+        <p class="about-bio-title"><b>JUN</b> Essay 개인 사진전</p>
+        <p class="about-bio-quote">어디로 가는지 알지 못하면서도 그래도 가고 있다는 진행형.....</p>
+      </div>
+      <div class="about-social" aria-label="소셜 미디어 링크">
+        <a href="../404.html" target="_blank" rel="noopener noreferrer" title="Facebook" aria-label="Facebook로 이동">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round">
+            <rect x="3" y="3" width="18" height="18" rx="4"/>
+            <path d="M14 21v-6.6h2.1l.4-2.4H14v-1.6c0-.66.2-1.1 1.1-1.1H16.5V7.1C16.2 7.06 15.4 7 14.4 7c-2 0-3.4 1.2-3.4 3.5V12H9v2.4h2v6.6z" fill="currentColor" stroke="none"/>
+          </svg>
+        </a>
+        <a href="../404.html" target="_blank" rel="noopener noreferrer" title="Instagram" aria-label="Instagram으로 이동">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round">
+            <rect x="3" y="3" width="18" height="18" rx="5"/>
+            <circle cx="12" cy="12" r="4"/>
+            <circle cx="17.2" cy="6.8" r="0.7" fill="currentColor" stroke="none"/>
+          </svg>
+        </a>
+        <a href="../404.html" target="_blank" rel="noopener noreferrer" title="YouTube" aria-label="YouTube로 이동">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round">
+            <rect x="2.5" y="5.5" width="19" height="13" rx="4"/>
+            <path d="M10.3 9.1l5 2.9-5 2.9z" fill="currentColor" stroke="none"/>
+          </svg>
+        </a>
+        <a href="#" id="open-contact" title="문의하기" aria-label="문의 폼 열기" aria-haspopup="dialog" role="button">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round">
+            <rect x="3" y="5" width="18" height="14" rx="2"/>
+            <path d="M4 6.5l8 6 8-6"/>
+          </svg>
+        </a>
+      </div>
+      <div class="about-photo">
+        <a href="https://blog.naver.com/jd_photographer" target="_blank" rel="noopener noreferrer" title="블로그로 이동" aria-label="JUN 블로그 새 창으로 열기">
+         <img src="image/profile.png" alt="사진작가 JUN 프로필 사진">
+      </div>
+    </div>
+  </section>
+
+  <p class="breadcrumb">
+    <a href="../gallery-a.html">GALLERY A_</a><span class="sep">|</span><a href="../scenery.html">Scenery</a>
+  </p>
+  <hr class="rule">
+
+              <main class="entry">
+    <div class="entry-media">
+      <button type="button" class="media-trigger" aria-label="사진 크게 보기 (라이트박스 열기)">
+        <img src="image/scenery_daemuuidoui-nagjo_2024-09-06.jpg" alt="대무의도의 낙조">
+      </button>
+    </div>
+
+    <div>
+      <p class="entry-tag">#SCENERY 대무의도의 낙조 2024-09-06</p>
+
+      <div class="essay">
+        <h2><span class="entry-title-plain">대무의도의 낙조</span></h2>
+        <p>우리가 왜 산을 오르는지 아니? 그건 삶의 각도를 다르게 볼 수 있기 때문이지&nbsp;우리가 바닷가에 가는 이유는 더&nbsp; 넓은&nbsp; 세상을 보기 위해서야 지평선에서는 끝이 보이지 않지!</p>
+      </div>
+
+      <p class="keywords">키워드 / #대무도의해변</p>
+
+      <dl class="meta">
+        <dt>촬영일 /</dt><dd>2024-09-06</dd>
+        <dt>장&nbsp;&nbsp;&nbsp;&nbsp;소 /</dt><dd>인천 대무의도 해변</dd>
+        <dt>저작권 :</dt><dd>JEONGDAE JANG</dd>
+        <dt>정&nbsp;&nbsp;&nbsp;&nbsp;보 /</dt><dd>F7.1 / 1/100s / ISO200 / 40mm |  Z6 / DSC_7630</dd>
+        <dt>블로그 :</dt><dd><a href="https://blog.naver.com/jd_photographer" target="_blank" rel="noopener noreferrer">https://blog.naver.com/jd_photographer</a></dd>
+      </dl>
+    </div>
+  </main>
+
+  <section class="snap-strip" aria-labelledby="snap-strip-heading">
+    <h3 id="snap-strip-heading"><a href="../scenery.html">Scenery</a></h3>
+    <div class="thumb-row"></div>
+    <script src="thumbs.js"></script>
+    <script>
+    // 썸네일 목록 렌더링: 목록은 scenery/thumbs.js 한 곳에만 있다 (경로는 그 파일 위치 기준)
+    (function(){
+      var d = window.THUMBS, row = document.querySelector('.thumb-row');
+      if (!d || !row) return;
+      d.items.forEach(function(t){
+        var a = document.createElement('a'); a.href = new URL(t[0], d.base).href;
+        var img = document.createElement('img'); img.src = new URL(t[1], d.base).href; img.alt = t[2]; img.loading = 'lazy';
+        a.appendChild(img);
+        var cap = document.createElement('span'); cap.className = 'thumb-cap'; cap.setAttribute('aria-hidden','true');
+        var ttl = document.createElement('span'); ttl.className = 'thumb-cap-title'; ttl.textContent = t[2]; cap.appendChild(ttl);
+        var m = t[0].match(/(\d{4})-(\d{2})-(\d{2})/);   // 파일명 속 날짜 → "2026. 1. 10."
+        if (m){ var dt = document.createElement('span'); dt.className = 'thumb-cap-date'; dt.textContent = m[1] + '. ' + (+m[2]) + '. ' + (+m[3]) + '.'; cap.appendChild(dt); }
+        a.appendChild(cap); row.appendChild(a);
+      });
+    })();
+    </script>
+    <div class="thumb-pagination" id="thumb-pagination">
+      <button type="button" id="thumb-prev">&lt; 이전</button>
+      <button type="button" id="thumb-next">다음 &gt;</button>
+    </div>
+  </section>
+
+  <script>
+  (function(){
+    // 16열 그리드에 맞춰 한 페이지당 8개씩 표시
+    var PAGE_SIZE = 8;
+    var items = Array.prototype.slice.call(document.querySelectorAll('.thumb-row > a'));
+    var page = 0;
+    var totalPages = Math.max(1, Math.ceil(items.length / PAGE_SIZE));
+    var prevBtn = document.getElementById('thumb-prev');
+    var nextBtn = document.getElementById('thumb-next');
+    var pagination = document.getElementById('thumb-pagination');
+
+    function render(){
+      var start = page * PAGE_SIZE;
+      var end = start + PAGE_SIZE;
+      items.forEach(function(a, i){
+        a.style.display = (i >= start && i < end) ? '' : 'none';
+      });
+      prevBtn.disabled = (page <= 0);
+      nextBtn.disabled = (page >= totalPages - 1);
+    }
+
+    // 페이지가 1개뿐이어도 버튼을 보여 주되 비활성화 상태로 둠
+    // (나중에 썸네일이 추가되면 자동으로 페이지네이션 동작)
+    prevBtn.addEventListener('click', function(){
+      if (page > 0){ page--; render(); }
+    });
+    nextBtn.addEventListener('click', function(){
+      if (page < totalPages - 1){ page++; render(); }
+    });
+    render();
+
+    // 활성 썸네일이 있는 쪽으로 이동
+    document.addEventListener('thumb:reveal', function(e){
+      var p = Math.floor(items.indexOf(e.detail) / PAGE_SIZE);
+      if (p >= 0 && p !== page){ page = p; render(); }
+    });
+
+    // 항목이 없으면 숨김
+    if (items.length === 0){
+      pagination.style.display = 'none';
+    }
+  })();
+  </script>
+
+
+  <script>
+  // 본문(main.entry) 로더: 썸네일 클릭 → 해시 변경 → 해당 글의 main.entry만 가져와 교체
+  (function(){
+    var entry  = document.querySelector('main.entry');
+    var strip  = document.querySelector('.thumb-row');
+    var thumbs = Array.prototype.slice.call(strip.querySelectorAll('a'));
+    var seq = 0, current = null;
+
+    function slugOf(a){ return decodeURIComponent(a.pathname.split('/').pop()).replace(/\.html$/, ''); }
+    function findBySlug(s){ return thumbs.filter(function(a){ return slugOf(a) === s; })[0]; }
+
+    function setActive(a){
+      if (current) current.classList.remove('is-active');
+      current = a;
+      a.classList.add('is-active');
+      document.dispatchEvent(new CustomEvent('thumb:reveal', { detail: a }));  // 썸네일 쪽이 알아서 해당 페이지로 이동
+    }
+
+    // 가져온 본문의 상대경로를 "그 페이지를 직접 열었을 때"와 같게 절대경로로 변환
+    function absolutize(root, base){
+      root.querySelectorAll('[src],[href]').forEach(function(el){
+        ['src','href'].forEach(function(attr){
+          var v = el.getAttribute(attr);
+          if (v && v.charAt(0) !== '#') el.setAttribute(attr, new URL(v, base).href);
+        });
+      });
+    }
+
+    function loadEntry(a){
+      var my = ++seq, url = a.href;
+      setActive(a);
+      fetch(url)
+        .then(function(r){ if (!r.ok) throw new Error(r.status); return r.text(); })
+        .then(function(html){
+          if (my !== seq) return;   // 연속 클릭 시 늦게 온 응답 무시
+          var next = new DOMParser().parseFromString(html, 'text/html').querySelector('main.entry');
+          if (!next) throw new Error('main.entry not found');
+          absolutize(next, url);
+          entry.innerHTML = next.innerHTML;
+          entry.scrollIntoView({ behavior: 'smooth', block: 'start' });
+        })
+        .catch(function(){ if (my === seq) location.href = url; });   // 실패 시 기존처럼 페이지 이동
+    }
+
+    // 처음부터 들어 있는 본문에 해당하는 썸네일 = 기본(home)
+    // 본문 이미지 파일명(확장자 제외) = 글 파일명 규칙으로 판별 (하위 페이지의 h2는 링크가 아니라서 h2 a는 쓰지 않음)
+    var img = entry.querySelector('.entry-media img');
+    var homeSlug = img ? decodeURIComponent(img.getAttribute('src').split('/').pop()).replace(/\.[^.]+$/, '') : '';
+    var home = findBySlug(homeSlug);
+    if (home) setActive(home);
+
+    // 주소의 #해시 → 표시할 글 결정 (해시 없으면 home)
+    function sync(){
+      var a = findBySlug(decodeURIComponent(location.hash.slice(1))) || home;
+      if (a && a !== current) loadEntry(a);
+    }
+
+    strip.addEventListener('click', function(e){
+      var a = e.target.closest('a');
+      if (!a || e.button !== 0 || e.metaKey || e.ctrlKey || e.shiftKey || e.altKey) return;
+      e.preventDefault();
+      location.hash = slugOf(a);    // hashchange → sync (뒤로가기/앞으로가기도 동일 경로)
+    });
+    window.addEventListener('hashchange', sync);
+    sync();
+  })();
+  </script>
+
+  <footer>
+    <span>Copyright © 1990-2026 JEONGDAE JANG. All Rights Reserved. | <a href="https://blog.naver.com/jd_photographer" target="_blank">NAVER Blog</a></span>
+    <nav class="footer-nav" aria-label="하단 메뉴">
+      <a href="../index.html">Home</a>
+      <a href="../gallery-a.html">GALLERY A_</a>
+      <a href="../snap.html">Snap</a>
+      <a href="../scenery.html">Scenery</a>
+      <a href="../abstract.html">Abstract</a>
+    </nav>
+  </footer>
+
+</div>
+
+<div class="lightbox" id="lightbox" role="dialog" aria-modal="true" aria-label="사진 원본 보기">
+  <button type="button" class="lightbox-close" aria-label="닫기">&times;</button>
+  <img id="lightbox-img" src="image/scenery_daemuuidoui-nagjo_2024-09-06.jpg" alt="대무의도의 낙조">
+</div>
+
+<script>
+(function(){
+  var lightbox = document.getElementById('lightbox');
+  var lbImg = document.getElementById('lightbox-img');
+  var closeBtn = lightbox.querySelector('.lightbox-close');
+
+  function openLightbox(){
+    lightbox.classList.add('open');
+    lbImg.classList.remove('show');
+    lbImg.classList.remove('zoomed');
+    lightbox.classList.remove('zoomed-view');
+    void lbImg.offsetWidth;
+    requestAnimationFrame(function(){
+      lbImg.classList.add('show');
+    });
+    document.body.style.overflow = 'hidden';
+  }
+  function closeLightbox(){
+    lightbox.classList.remove('open');
+    lbImg.classList.remove('show');
+    lbImg.classList.remove('zoomed');
+    lightbox.classList.remove('zoomed-view');
+    lightbox.scrollTop = 0;
+    lightbox.scrollLeft = 0;
+    document.body.style.overflow = '';
+  }
+
+  lbImg.addEventListener('click', function(e){
+    e.stopPropagation();
+    var isZoomed = lbImg.classList.toggle('zoomed');
+    lightbox.classList.toggle('zoomed-view', isZoomed);
+    if (!isZoomed) { lightbox.scrollTop = 0; lightbox.scrollLeft = 0; }
+  });
+
+  document.addEventListener('click', function(e){
+    var t = e.target.closest('.media-trigger');
+    if (!t) return;
+    var img = t.querySelector('img');
+    lbImg.src = img.src; lbImg.alt = img.alt;
+    openLightbox();
+  });
+  closeBtn.addEventListener('click', closeLightbox);
+  lightbox.addEventListener('click', function(e){
+    if (e.target === lightbox) closeLightbox();
+  });
+  document.addEventListener('keydown', function(e){
+    if (e.key === 'Escape' && lightbox.classList.contains('open')) closeLightbox();
+  });
+})();
+</script>
+
+<script>
+  // 이미지만 우클릭 방지 + 경고 메시지
+  document.addEventListener('contextmenu', function(e) {
+    if (e.target.tagName === 'IMG') {
+      e.preventDefault();
+      alert('Copyright © 1990-2026 JEONGDAE JANG. All Rights Reserved. | Contact: Please leave a message');
+    }
+  });
+</script>
+
+<div class="contact-modal" id="contact-modal" role="dialog" aria-modal="true" aria-labelledby="contact-title">
+  <div class="contact-box">
+    <button type="button" class="contact-close" aria-label="닫기">&times;</button>
+    <h2 id="contact-title">문의하기</h2>
+    <p class="contact-desc">남겨주신 내용은 메일로 전달됩니다.</p>
+    <form id="contact-form" action="https://api.web3forms.com/submit" method="POST">
+      <input type="hidden" name="access_key" value="c07521e1-6ef4-495d-b8a3-a4f932645ae5">
+      <input type="hidden" name="subject" value="[홈페이지] 새 문의가 도착했습니다">
+      <input type="hidden" name="from_name" value="JEONGDAE JANG 홈페이지">
+      <input type="checkbox" name="botcheck" style="display:none" tabindex="-1" autocomplete="off">
+      <label for="cf-name">이름</label>
+      <input type="text" id="cf-name" name="name" required>
+      <label for="cf-email">이메일 (답장 받을 주소)</label>
+      <input type="email" id="cf-email" name="email" required>
+      <label for="cf-message">문의 내용</label>
+      <textarea id="cf-message" name="message" required></textarea>
+      <div class="contact-actions">
+        <button type="submit" class="contact-submit">보내기</button>
+        <span class="contact-status" id="contact-status" role="status" aria-live="polite"></span>
+      </div>
+    </form>
+  </div>
+</div>
+
+<script>
+// 문의 폼: 헤더 메일 아이콘 클릭 시 열기, Web3Forms로 전송
+(function(){
+  var openBtn = document.getElementById('open-contact');
+  var modal = document.getElementById('contact-modal');
+  var form = document.getElementById('contact-form');
+  var statusEl = document.getElementById('contact-status');
+  var submitBtn = form.querySelector('.contact-submit');
+  var closeBtn = modal.querySelector('.contact-close');
+  var lastFocus = null;
+
+  function setStatus(msg, cls){ statusEl.textContent = msg; statusEl.className = 'contact-status' + (cls ? ' ' + cls : ''); }
+  function openModal(e){
+    e.preventDefault();
+    lastFocus = document.activeElement;
+    setStatus('');
+    modal.classList.add('open');
+    document.body.style.overflow = 'hidden';
+    document.getElementById('cf-name').focus();
+  }
+  function closeModal(){
+    modal.classList.remove('open');
+    document.body.style.overflow = '';
+    if (lastFocus) lastFocus.focus();
+  }
+
+  openBtn.addEventListener('click', openModal);
+  closeBtn.addEventListener('click', closeModal);
+  modal.addEventListener('click', function(e){ if (e.target === modal) closeModal(); });
+  document.addEventListener('keydown', function(e){
+    if (e.key === 'Escape' && modal.classList.contains('open')) closeModal();
+  });
+
+  form.addEventListener('submit', function(e){
+    e.preventDefault();
+    submitBtn.disabled = true;
+    setStatus('보내는 중...');
+    fetch(form.action, { method: 'POST', headers: { 'Accept': 'application/json' }, body: new FormData(form) })
+      .then(function(r){ return r.json(); })
+      .then(function(d){
+        if (d.success){ setStatus('문의가 전송되었습니다. 감사합니다.', 'ok'); form.reset(); }
+        else { setStatus('전송에 실패했습니다. 잠시 후 다시 시도해 주세요.', 'err'); }
+      })
+      .catch(function(){ setStatus('전송에 실패했습니다. 네트워크를 확인해 주세요.', 'err'); })
+      .then(function(){ submitBtn.disabled = false; });
+  });
+})();
+</script>
+
+</body>
+</html>

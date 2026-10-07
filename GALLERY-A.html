@@ -1,0 +1,699 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+  <title>GALLERY A_ Photo Total | REPUBLIC OF KOREA photographer JEONGDAE JANG archive</title>
+  <meta name="description" content="1990년부터 한국의 풍경과 일상을 기록해 온 사진가 장정대의 개인 홈페이지입니다. 서정적인 시선이 담긴 사진 갤러리와 작품 아카이브를 만나보세요.">
+  <meta name="keywords" content="장정대, 사진가 장정대, 한국 사진가, 사진작가, 한국 사진작가, 개인 사진전, 거리 사진, 스냅 사진, 풍경 사진, 추상 사진, 사진 갤러리, 사진 아카이브">  
+  <meta property="og:type" content="website">
+  <meta property="og:title" content="사진가 장정대 공식 홈페이지">
+  <meta property="og:description" content="1990년부터 기록해 온 한국 거리 사진가 장정대의 사진 아카이브">
+  <style>
+    @import url('https://fonts.googleapis.com/css2?family=DM+Sans:wght@500;600;700&display=swap');
+    * { margin:0; padding:0; box-sizing:border-box; -webkit-user-select:none; user-select:none; }
+    html, body {
+      width:100%; height:100%; overflow:hidden;
+      background:#000 url('GALLERY%20A_%20Page.png') center center / cover no-repeat fixed;
+      font-family:'DM Sans',-apple-system,BlinkMacSystemFont,sans-serif;
+      cursor:grab;
+    }
+    body.dragging { cursor:grabbing; }
+
+    .nav {
+      position:fixed; top:20px; left:50%; transform:translateX(-50%); z-index:1000;
+      display:flex; align-items:center; gap:8px; background:#1a1a1a; color:#fff;
+      padding:10px 18px 10px 16px; border-radius:100px;
+      box-shadow:0 8px 32px rgba(0,0,0,0.18); backdrop-filter:blur(12px);
+      transition:transform 0.25s ease;
+    }
+    .nav:hover { transform:translateX(-50%) scale(1.02); }
+    .nav-logo { display:flex; align-items:center; gap:8px; font-weight:600; font-size:15px; letter-spacing:-0.02em; }
+    .nav-logo svg { width:18px; height:18px; }
+    .nav-links { display:flex; align-items:center; gap:4px; margin-left:4px; }
+    .nav-links a {
+      color:#fff; text-decoration:none; font-size:13px; font-weight:500;
+      padding:6px 12px; border-radius:100px; transition:background 0.2s;
+    }
+    .nav-links a:hover { background:rgba(255,255,255,0.15); }
+
+    #viewport { position:fixed; inset:0; overflow:hidden; touch-action:none; }
+    #world { position:absolute; top:0; left:0; will-change:transform; transform-origin:0 0; }
+
+    .tile {
+      position:absolute;
+      border-radius:4px;
+      overflow:hidden;
+      background:#e8e8e8;
+      box-shadow:0 3px 16px rgba(0,0,0,0.06);
+      cursor:pointer;
+      transform-origin:center center;
+      will-change:transform, opacity;
+    }
+    .tile img {
+      width:100%; height:100%; object-fit:cover; display:block; pointer-events:none;
+    }
+
+    #lightbox {
+      position:fixed; inset:0; z-index:2000; background:rgba(0,0,0,0.92);
+      display:flex; align-items:center; justify-content:center;
+      opacity:0; visibility:hidden; transition:opacity 0.3s ease, visibility 0.3s ease;
+      cursor:zoom-out;
+    }
+    #lightbox.active { opacity:1; visibility:visible; }
+    #lightbox img {
+      max-width:92vw; max-height:92vh; object-fit:contain; border-radius:4px;
+      box-shadow:0 20px 80px rgba(0,0,0,0.5);
+      transform:scale(0.75);
+      filter:blur(20px);
+      opacity:0;
+      transition:
+        transform 1s cubic-bezier(0.22, 1, 0.36, 1),
+        filter 1s ease-out,
+        opacity 1s ease-out;
+    }
+    #lightbox img.sharp {
+      transform:scale(1);
+      filter:blur(0px);
+      opacity:1;
+    }
+    /* 나갈 때: 줌 아웃 */
+    #lightbox img.zoom-out {
+      transform:scale(1.15);
+      filter:blur(16px);
+      opacity:0;
+      transition:
+        transform 0.4s cubic-bezier(0.4, 0, 0.2, 1),
+        filter 0.4s ease-in,
+        opacity 0.4s ease-in;
+    }
+    .lightbox-close {
+      position:absolute; top:24px; right:28px; width:44px; height:44px; border-radius:50%;
+      background:rgba(255,255,255,0.12); border:none; color:#fff; font-size:24px; cursor:pointer;
+      display:flex; align-items:center; justify-content:center; transition:background 0.2s;
+    }
+    .lightbox-close:hover { background:rgba(255,255,255,0.22); }
+
+    .lightbox-nav {
+      position:absolute; top:50%; transform:translateY(-50%);
+      width:48px; height:48px; border-radius:50%;
+      background:rgba(255,255,255,0.12); border:none; color:#fff;
+      font-size:28px; cursor:pointer; display:flex; align-items:center; justify-content:center;
+      transition:background 0.2s, transform 0.2s; z-index:10;
+      line-height:1; padding:0;
+    }
+    .lightbox-nav:hover { background:rgba(255,255,255,0.25); transform:translateY(-50%) scale(1.08); }
+    .lightbox-prev { left:20px; }
+    .lightbox-next { right:20px; }
+    @media (max-width:600px) {
+      .lightbox-prev { left:8px; }
+      .lightbox-next { right:8px; }
+      .lightbox-nav { width:40px; height:40px; font-size:22px; }
+    }
+
+    #start-screen {
+      position:fixed; inset:0; z-index:3000; background:rgba(0,0,0,0.92);
+      display:flex; flex-direction:column; align-items:center; justify-content:center;
+      transition:opacity 0.4s ease, visibility 0.4s ease;
+    }
+    #start-screen.hidden { opacity:0; visibility:hidden; pointer-events:none; }
+    .start-card {
+      background:#fff; border-radius:24px; padding:48px 56px;
+      box-shadow:0 20px 60px rgba(0,0,0,0.08); text-align:center; max-width:420px;
+    }
+    .start-card h1 { font-size:22px; font-weight:700; margin-bottom:8px; letter-spacing:-0.03em; }
+    .start-card p { font-size:14px; color:#666; line-height:1.6; margin-bottom:28px; }
+    .btn-select {
+      display:inline-flex; align-items:center; gap:10px; background:#1a1a1a; color:#fff;
+      border:none; padding:14px 28px; border-radius:100px; font-size:15px; font-weight:600;
+      cursor:pointer; transition:transform 0.2s, background 0.2s;
+    }
+    .btn-select:hover { background:#333; transform:scale(1.03); }
+    .btn-select svg { width:18px; height:18px; }
+    .drop-zone {
+      margin-top:20px; padding:20px; border:2px dashed #ccc; border-radius:16px;
+      color:#999; font-size:13px; transition:border-color 0.2s, background 0.2s;
+    }
+    .drop-zone.dragover { border-color:#1a1a1a; background:#f8f8f8; color:#333; }
+
+    #hint {
+      position:fixed; bottom:28px; left:50%; transform:translateX(-50%);
+      background:rgba(0,0,0,0.7); color:#fff; padding:10px 20px; border-radius:100px;
+      font-size:13px; font-weight:500; z-index:900; pointer-events:none;
+      opacity:0; transition:opacity 0.5s ease;
+    }
+    #hint.show { opacity:1; }
+    #hint.fade { opacity:0; }
+    #folder-input { display:none; }
+    #copyright {
+      position: fixed;
+      bottom: 12px;
+      left: 50%;
+      transform: translateX(-50%);
+      z-index: 850;
+      pointer-events: none;
+      font-size: 11px;
+      font-weight: 500;
+      letter-spacing: 0.02em;
+      color: rgba(255, 255, 255, 0.55);
+      text-align: center;
+      white-space: nowrap;
+      text-shadow: 0 1px 3px rgba(0, 0, 0, 0.6);
+    }
+  </style>
+</head>
+<body>
+  <nav class="nav">
+    <a class="nav-logo" href="index.html" style="text-decoration:none;color:inherit;">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2">
+        <path d="M12 2a10 10 0 1 0 10 10" stroke-linecap="round"/>
+        <path d="M12 2a10 10 0 0 1 10 10" stroke-linecap="round" stroke-dasharray="2 4"/>
+        <circle cx="12" cy="12" r="3" fill="currentColor" stroke="none"/>
+      </svg>
+      <span>Home</span>
+    </a>
+    <div class="nav-links">
+      <a href="snap.html">Snap</a>
+      <a href="scenery.html">Scenery</a>
+      <a href="abstract.html">Abstract</a>
+    </div>
+  </nav>
+
+  <div id="viewport"><div id="world"></div></div>
+
+  <div id="lightbox">
+    <button class="lightbox-close" aria-label="닫기">×</button>
+    <button class="lightbox-nav lightbox-prev" aria-label="이전">‹</button>
+    <button class="lightbox-nav lightbox-next" aria-label="다음">›</button>
+    <img src="" alt="">
+  </div>
+
+  <div id="hint">Copyright © 1990-2026 JEONGDAE JANG. All Rights Reserved.</div>
+
+  <div id="start-screen" class="hidden" style="display:none;">
+    <div class="start-card">
+      <h1>Infinite Folio</h1>
+      <p>
+        사진이 들어있는 폴더를 선택하면<br>
+        자동으로 모든 이미지를 불러옵니다.<br>
+        <small style="color:#aaa">(jpg, png, jpeg, webp, gif 지원)</small>
+      </p>
+      <button class="btn-select" id="btn-select">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+          <path d="M22 19a2 2 0 0 1-2 2H4a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h5l2 3h9a2 2 0 0 1 2 2z"/>
+        </svg>
+        사진 폴더 선택
+      </button>
+      <div class="drop-zone" id="drop-zone">또는 여기에 폴더를 드래그해서 놓으세요</div>
+    </div>
+  </div>
+
+  <input type="file" id="folder-input" webkitdirectory directory multiple accept="image/*">
+
+  <script>
+    const world = document.getElementById('world');
+    const viewport = document.getElementById('viewport');
+    const lightbox = document.getElementById('lightbox');
+    const lightboxImg = lightbox.querySelector('img');
+    const startScreen = document.getElementById('start-screen');
+    const btnSelect = document.getElementById('btn-select');
+    const folderInput = document.getElementById('folder-input');
+    const dropZone = document.getElementById('drop-zone');
+    const hint = document.getElementById('hint');
+
+    // generate_post.py가 Snap/Scenery/Abstract 글을 만들 때마다 이 배열에
+    // 사진 경로를 자동으로 추가합니다 (jun-home 폴더 기준 상대경로).
+    const IMAGES = [
+      'snap/image/snap_doseongeul-baraboda_2022-11-13.jpg',
+      'snap/image/snap_meomulgo-sipeun-bom_2026-04-01.jpg',
+      'snap/image/snap_jihyeui-supeseo-gileul-mudda._2026-04-11.jpg',
+      'snap/image/snap_igseondong-golmoggil_2026-04-18.jpg',
+      'snap/image/snap_eondeoggil_2025-08-23.jpg',
+      'snap/image/snap_siganeun-gangmulcheoreom_2025-04-26.jpg',
+      'snap/image/snap_jageun-siseon_2025-06-14.jpg',
+      'snap/image/snap_sajine-seumyeo-deulda._2025-06-14.jpg',
+      'snap/image/snap_gabyeoun-inyeon_2025-05-17.jpg',
+      'snap/image/snap_ibyeolui-bombi_2025-04-12.jpg',
+      'snap/image/snap_misulgwanui-meon-punggyeong_2025-03-22.jpg',
+      'snap/image/snap_3wol-bughansan_2012-03-24.jpg',
+      'snap/image/snap_chingu_2025-05-17.jpg',
+      'snap/image/snap_oneuldo-geodda._2025-05-17.jpg',
+      'snap/image/snap_haneul-kape_2025-03-08.jpg',
+      'snap/image/snap_nugungaui-maeume-jeobsog_2025-03-08.jpg',
+      'snap/image/snap_muneul-deuleoseomyeon..._2024-08-24.jpg',
+      'snap/image/snap_jungsimjeog-siseon_2024-08-10.jpg',
+      'snap/image/snap_hwinalrineun-geori-punggyeong_2000-12-25.jpg',
+      'snap/image/snap_noeul-jineun-sigan..._2023-04-07.jpg',
+      'snap/image/snap_miro_2023-03-10.jpg',
+      'snap/image/snap_toegeunhaneun-yeoja_2023-03-10.jpg',
+      'snap/image/snap_georiui-ilsang_2023-02-28.jpg',
+      'snap/image/snap_gaeului-chang_2022-09-24.jpg',
+      'snap/image/snap_gyeoul-eoneunal_2022-12-13.jpg',
+      'snap/image/snap_haruui-aswium_2023-02-14.jpg',
+      'snap/image/snap_sigan-girog_2016-04-02.jpg',
+      'snap/image/snap_neomeoya-hal-gil_2025-07-06.jpg',
+      'snap/image/snap_gyejeolui-achim_2026-03-24.jpg',
+      'snap/image/snap_jinagan-siganege-anbureul-mudda._2025-08-02.jpg',
+      'snap/image/snap_analrogeuui-gieog_2026-07-15.jpg',
+      'snap/image/snap_toegeun-eobsneun-salm_2025-11-08.jpg',
+      'snap/image/snap_neon-eonjena-areumdabda._2025-05-24.jpg',
+      'snap/image/snap_seongsudong-geuraepig_2026-01-10.jpg',
+      'abstract/image/abstract_hwinalrida_2007-01-06.jpg',
+      'scenery/image/scenery_haneuljeongwon_2023-12-23.jpg',
+    ];
+    // 파일명 공백 등 안전하게 인코딩
+    let images = IMAGES.map(f => f.split('/').map(encodeURIComponent).join('/'));
+    let tiles = [];
+    let offsetX = 0, offsetY = 0, targetX = 0, targetY = 0;
+    let velocityX = 0, velocityY = 0;
+    let isDragging = false, lastX = 0, lastY = 0, lastTime = 0;
+
+    /*
+      블록을 셀 크기의 정수배로 정확히 맞춤
+      → 블록 경계에 남는 여백 0
+      → 상하좌우 이동 시 사진이 끊김 없이 이어짐
+    */
+    const CELL_W = 250;
+    const CELL_H = 290;
+    const COLS = 8;
+    const ROWS = 6;
+    const BLOCK_W = CELL_W * COLS;  // 1680
+    const BLOCK_H = CELL_H * ROWS;  // 1440
+    const GAP = 60;
+
+    const BASE_SIZES = [
+      { w: 155, h: 195 },
+      { w: 140, h: 175 },
+      { w: 170, h: 135 },
+      { w: 130, h: 165 },
+      { w: 160, h: 200 },
+      { w: 145, h: 115 },
+      { w: 135, h: 180 },
+      { w: 180, h: 145 },
+      { w: 120, h: 150 },
+      { w: 165, h: 125 }
+    ];
+
+    function isImageFile(f) {
+      return (f.type || '').startsWith('image/') || /\.(jpe?g|png|webp|gif|bmp|avif)$/i.test(f.name);
+    }
+
+    async function loadImagesFromFiles(fileList) {
+      images.forEach(u => URL.revokeObjectURL(u));
+      images = [];
+      const files = Array.from(fileList).filter(isImageFile);
+      if (!files.length) {
+        alert('선택한 폴더에 이미지 파일이 없습니다.\n(jpg, png, webp, gif 등)');
+        return false;
+      }
+      files.sort((a, b) => a.name.localeCompare(b.name, 'ko'));
+      images = files.map(f => URL.createObjectURL(f));
+      return true;
+    }
+
+    async function collectCategoryImages(dirHandle) {
+      // jun-home 루트 폴더가 선택된 경우: snap/scenery/abstract 의 image 폴더를 찾아 합친다.
+      const collected = [];
+      for (const cat of ['snap', 'scenery', 'abstract']) {
+        try {
+          const catDir = await dirHandle.getDirectoryHandle(cat);
+          const imgDir = await catDir.getDirectoryHandle('image');
+          for await (const entry of imgDir.values()) {
+            if (entry.kind !== 'file') continue;
+            if (entry.name.toLowerCase() === 'profile.png') continue; // 프로필 사진 제외
+            collected.push(await entry.getFile());
+          }
+        } catch (err) {
+          // 해당 카테고리 폴더가 없으면 그냥 건너뜀
+        }
+      }
+      return collected;
+    }
+
+    async function selectFolder() {
+      if ('showDirectoryPicker' in window) {
+        try {
+          const dir = await window.showDirectoryPicker();
+
+          const categoryFiles = await collectCategoryImages(dir);
+          if (categoryFiles.length) {
+            if (await loadImagesFromFiles(categoryFiles)) startGallery();
+            return;
+          }
+
+          const list = [];
+          for await (const e of dir.values()) {
+            if (e.kind === 'file') list.push(await e.getFile());
+          }
+          if (await loadImagesFromFiles(list)) startGallery();
+          return;
+        } catch (err) {
+          if (err.name !== 'AbortError') console.warn(err);
+        }
+      }
+      folderInput.click();
+    }
+
+    function filterToCategoryFiles(fileList) {
+      // <input webkitdirectory> / 드래그앤드롭은 File.webkitRelativePath로 경로를 준다.
+      // jun-home 폴더가 선택된 경우 snap|scenery|abstract 의 image 폴더 파일만 추려낸다.
+      const files = Array.from(fileList);
+      const filtered = files.filter(f => {
+        const p = (f.webkitRelativePath || '').replace(/\\/g, '/');
+        return /\/(snap|scenery|abstract)\/image\//i.test(p) && f.name.toLowerCase() !== 'profile.png';
+      });
+      return filtered.length ? filtered : files;
+    }
+
+    folderInput.addEventListener('change', async e => {
+      if (await loadImagesFromFiles(filterToCategoryFiles(e.target.files))) startGallery();
+    });
+    btnSelect.addEventListener('click', selectFolder);
+
+    dropZone.addEventListener('dragover', e => { e.preventDefault(); dropZone.classList.add('dragover'); });
+    dropZone.addEventListener('dragleave', () => dropZone.classList.remove('dragover'));
+    dropZone.addEventListener('drop', async e => {
+      e.preventDefault();
+      dropZone.classList.remove('dragover');
+      const items = e.dataTransfer.items;
+      if (!items) return;
+      const list = [];
+      const entries = [];
+      for (let i = 0; i < items.length; i++) {
+        const en = items[i].webkitGetAsEntry?.();
+        if (en) entries.push(en);
+      }
+      async function readEntry(entry) {
+        if (entry.isFile) return new Promise(r => entry.file(f => { f.fullPath = entry.fullPath; r(f); }));
+        if (entry.isDirectory) {
+          const reader = entry.createReader();
+          const files = [];
+          const batch = () => new Promise(res => {
+            reader.readEntries(async ents => {
+              if (!ents.length) return res(files);
+              for (const ent of ents) {
+                const f = await readEntry(ent);
+                if (Array.isArray(f)) files.push(...f);
+                else if (f) files.push(f);
+              }
+              res(files.concat(await batch()));
+            });
+          });
+          return batch();
+        }
+        return null;
+      }
+      for (const en of entries) {
+        const r = await readEntry(en);
+        if (Array.isArray(r)) list.push(...r);
+        else if (r) list.push(r);
+      }
+      if (!list.length && e.dataTransfer.files.length) list.push(...Array.from(e.dataTransfer.files));
+      const filtered = list.filter(f => /\/(snap|scenery|abstract)\/image\//i.test(f.fullPath || '')
+        && f.name.toLowerCase() !== 'profile.png');
+      if (await loadImagesFromFiles(filtered.length ? filtered : list)) startGallery();
+    });
+
+    function startGallery() {
+      startScreen.classList.add('hidden');
+      createTiles();
+      targetX = -BLOCK_W * 0.08;
+      targetY = -BLOCK_H * 0.06;
+      offsetX = targetX;
+      offsetY = targetY;
+      hint.classList.add('show');
+      setTimeout(() => hint.classList.add('fade'), 3500);
+    }
+
+    function createTiles() {
+      world.innerHTML = '';
+      tiles = [];
+      if (!images.length) return;
+
+      function jitter(i, range) {
+        const s = Math.sin(i * 127.1 + 311.7) * 43758.5453;
+        return ((s - Math.floor(s)) - 0.5) * range;
+      }
+
+      // 모든 셀을 채움 → 블록 전체가 사진으로 가득
+      // 3x3 복제 → 경계에서도 사진이 바로 이어짐
+      // ★ 200장 지원: 블록 위치(bx, by)까지 반영해서 전체 이미지를 순환
+      for (let by = -1; by <= 1; by++) {
+        for (let bx = -1; bx <= 1; bx++) {
+          for (let r = 0; r < ROWS; r++) {
+            for (let c = 0; c < COLS; c++) {
+              const localIndex = r * COLS + c;
+              const blockOffset = ((by + 1) * 3 + (bx + 1)) * (COLS * ROWS);
+              const idx = (localIndex + blockOffset) % images.length;
+              const size = BASE_SIZES[localIndex % BASE_SIZES.length];
+
+              // 셀 중심
+              const cellCX = c * CELL_W + CELL_W / 2;
+              const cellCY = r * CELL_H + CELL_H / 2;
+
+              // 지터는 셀 안에서만 (경계 밖으로 안 나감 → 블록 이음새 공백 방지)
+              const maxJx = Math.max(0, (CELL_W - size.w - GAP) / 2);
+              const maxJy = Math.max(0, (CELL_H - size.h - GAP) / 2);
+              const jx = jitter(localIndex * 3 + bx * 17, maxJx * 0.9);
+              const jy = jitter(localIndex * 5 + by * 19, maxJy * 0.9);
+
+              const baseX = bx * BLOCK_W + cellCX - size.w / 2 + jx;
+              const baseY = by * BLOCK_H + cellCY - size.h / 2 + jy;
+
+              const el = document.createElement('div');
+              el.className = 'tile';
+              el.style.width = size.w + 'px';
+              el.style.height = size.h + 'px';
+              el.style.left = baseX + 'px';
+              el.style.top = baseY + 'px';
+
+              const img = document.createElement('img');
+              img.src = images[idx];
+              img.alt = '';
+              img.loading = 'lazy';
+              img.draggable = false;
+              el.appendChild(img);
+
+              el.addEventListener('click', () => {
+                if (Math.abs(velocityX) > 0.8 || Math.abs(velocityY) > 0.8) return;
+                openLightbox(images[idx]);
+              });
+
+              world.appendChild(el);
+              tiles.push({ el, baseX, baseY, baseW: size.w, baseH: size.h });
+            }
+          }
+        }
+      }
+    }
+
+    /* 구형 스케일 */
+    function updateTileScales() {
+      const vw = window.innerWidth;
+      const vh = window.innerHeight;
+      const cx = vw / 2;
+      const cy = vh / 2;
+      const radius = Math.min(vw, vh) * 0.68;
+
+      for (const t of tiles) {
+        const sx = t.baseX + offsetX + t.baseW / 2;
+        const sy = t.baseY + offsetY + t.baseH / 2;
+
+        const dx = (sx - cx) / radius;
+        const dy = (sy - cy) / radius;
+        const r = Math.sqrt(dx * dx + dy * dy);
+
+        const clamped = Math.min(r, 1.2);
+        const sphere = Math.cos(clamped * Math.PI * 0.46);
+        const scale = 0.48 + sphere * 0.82;
+        const depth = (1 - sphere) * 18;
+
+        t.el.style.transform = `translateY(${depth * 0.25}px) scale(${scale})`;
+        t.el.style.zIndex = Math.round(sphere * 200);
+        t.el.style.opacity = 0.5 + sphere * 0.5;
+      }
+    }
+
+    function wrapOffset() {
+      // 블록 크기 정수배이므로 경계에서 정확히 맞물림
+      if (targetX >  BLOCK_W / 2) { targetX -= BLOCK_W; offsetX -= BLOCK_W; }
+      if (targetX < -BLOCK_W / 2) { targetX += BLOCK_W; offsetX += BLOCK_W; }
+      if (targetY >  BLOCK_H / 2) { targetY -= BLOCK_H; offsetY -= BLOCK_H; }
+      if (targetY < -BLOCK_H / 2) { targetY += BLOCK_H; offsetY += BLOCK_H; }
+    }
+
+    function animate() {
+      if (!isDragging) {
+        velocityX *= 0.92;
+        velocityY *= 0.92;
+        if (Math.abs(velocityX) < 0.05) velocityX = 0;
+        if (Math.abs(velocityY) < 0.05) velocityY = 0;
+        targetX += velocityX;
+        targetY += velocityY;
+      }
+      offsetX += (targetX - offsetX) * 0.18;
+      offsetY += (targetY - offsetY) * 0.18;
+      wrapOffset();
+      world.style.transform = `translate3d(${offsetX}px, ${offsetY}px, 0)`;
+      updateTileScales();
+      requestAnimationFrame(animate);
+    }
+
+    function onPointerDown(e) {
+      isDragging = true;
+      document.body.classList.add('dragging');
+      lastX = e.clientX ?? e.touches?.[0]?.clientX;
+      lastY = e.clientY ?? e.touches?.[0]?.clientY;
+      lastTime = performance.now();
+      velocityX = 0; velocityY = 0;
+    }
+    function onPointerMove(e) {
+      if (!isDragging) return;
+      e.preventDefault();
+      const x = e.clientX ?? e.touches?.[0]?.clientX;
+      const y = e.clientY ?? e.touches?.[0]?.clientY;
+      const now = performance.now();
+      const dt = Math.max(now - lastTime, 8);
+      const dx = x - lastX, dy = y - lastY;
+      targetX += dx; targetY += dy;
+      velocityX = dx / dt * 16;
+      velocityY = dy / dt * 16;
+      lastX = x; lastY = y; lastTime = now;
+    }
+    function onPointerUp() {
+      isDragging = false;
+      document.body.classList.remove('dragging');
+    }
+
+    viewport.addEventListener('mousedown', onPointerDown);
+    window.addEventListener('mousemove', onPointerMove);
+    window.addEventListener('mouseup', onPointerUp);
+    viewport.addEventListener('touchstart', onPointerDown, { passive: false });
+    window.addEventListener('touchmove', onPointerMove, { passive: false });
+    window.addEventListener('touchend', onPointerUp);
+    viewport.addEventListener('wheel', e => {
+      e.preventDefault();
+      targetX -= e.deltaX * 0.8;
+      targetY -= e.deltaY * 0.8;
+      velocityX = 0; velocityY = 0;
+    }, { passive: false });
+
+    let lightboxIndex = 0;
+    let lightboxTimer = null;
+    let isTransitioning = false;
+
+    function revealSharp() {
+      lightboxImg.classList.remove('zoom-out');
+      void lightboxImg.offsetWidth;
+      requestAnimationFrame(() => {
+        lightboxImg.classList.add('sharp');
+        isTransitioning = false;
+      });
+    }
+
+    function showLightboxImage(index, isSwitch) {
+      if (!images.length) return;
+      lightboxIndex = ((index % images.length) + images.length) % images.length;
+      const src = images[lightboxIndex];
+
+      const loadAndZoomIn = () => {
+        lightboxImg.classList.remove('sharp', 'zoom-out');
+        lightboxImg.removeAttribute('style');
+        lightboxImg.onload = null;
+        lightboxImg.src = src;
+
+        const onReady = () => {
+          // 줌 인 + 1초 블러→선명
+          revealSharp();
+        };
+
+        if (lightboxImg.complete && lightboxImg.naturalWidth > 0) {
+          onReady();
+        } else {
+          lightboxImg.onload = onReady;
+        }
+      };
+
+      if (isSwitch && lightboxImg.classList.contains('sharp')) {
+        // 전환: 현재 사진 줌 아웃 후 다음 사진 줌 인
+        isTransitioning = true;
+        lightboxImg.classList.remove('sharp');
+        lightboxImg.classList.add('zoom-out');
+        if (lightboxTimer) clearTimeout(lightboxTimer);
+        lightboxTimer = setTimeout(loadAndZoomIn, 400);
+      } else {
+        loadAndZoomIn();
+      }
+    }
+
+    function openLightbox(src) {
+      let idx = images.indexOf(src);
+      if (idx < 0) idx = 0;
+      lightboxIndex = idx;
+      lightbox.classList.add('active');
+      showLightboxImage(lightboxIndex, false);
+    }
+
+    function closeLightbox() {
+      if (lightboxTimer) {
+        clearTimeout(lightboxTimer);
+        lightboxTimer = null;
+      }
+      isTransitioning = false;
+      lightbox.classList.remove('active');
+      lightboxImg.classList.remove('sharp', 'zoom-out');
+      lightboxImg.onload = null;
+      lightboxImg.removeAttribute('style');
+    }
+
+    function lightboxPrev() {
+      if (isTransitioning) return;
+      showLightboxImage(lightboxIndex - 1, true);
+    }
+    function lightboxNext() {
+      if (isTransitioning) return;
+      showLightboxImage(lightboxIndex + 1, true);
+    }
+
+    document.querySelector('.lightbox-prev').addEventListener('click', e => {
+      e.stopPropagation();
+      lightboxPrev();
+    });
+    document.querySelector('.lightbox-next').addEventListener('click', e => {
+      e.stopPropagation();
+      lightboxNext();
+    });
+
+    lightbox.addEventListener('click', e => {
+      if (e.target === lightbox || e.target.classList.contains('lightbox-close')) closeLightbox();
+    });
+
+    document.addEventListener('keydown', e => {
+      if (!lightbox.classList.contains('active')) return;
+      if (e.key === 'Escape') closeLightbox();
+      if (e.key === 'ArrowLeft') lightboxPrev();
+      if (e.key === 'ArrowRight') lightboxNext();
+    });
+
+    // IMAGES가 채워져 있으면 바로 시작, 비어 있으면 폴더 선택 화면을 보여줌
+    if (images.length > 0) {
+      startGallery();
+    } else {
+      startScreen.style.display = 'flex';
+      startScreen.classList.remove('hidden');
+    }
+    animate();
+  </script>
+
+<script>
+  // 이미지만 우클릭 방지 + 경고 메시지
+  document.addEventListener('contextmenu', function(e) {
+    if (e.target.tagName === 'IMG') {
+      e.preventDefault();
+      alert('Copyright © 1990-2026 JEONGDAE JANG. All Rights Reserved. | Contact: Please leave a message');
+    }
+  });
+</script>
+  <div id="copyright">Copyright © 1990-2026 JEONGDAE JANG. All Rights Reserved.</div>
+</body>
+</html>
