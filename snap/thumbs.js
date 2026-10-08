@@ -1,5 +1,6 @@
 /* snap 썸네일 목록 (맨 앞이 최신). generate_post.py 가 관리하는 파일입니다. */
 window.THUMBS = { base: document.currentScript.src, items: [
+  ["snap_sesang-bakkui-inyeon_2024-05-09.html","image/snap_sesang-bakkui-inyeon_2024-05-09.jpg","세상 밖의 인연"],
   ["snap_gaeul-bich_2010-11-13.html","image/snap_gaeul-bich_2010-11-13.jpg","가을 빛"],
   ["snap_seongsudong-geuraepig_2026-01-10.html","image/snap_seongsudong-geuraepig_2026-01-10.jpg","성수동 그래픽"],
   ["snap_neon-eonjena-areumdabda._2025-05-24.html","image/snap_neon-eonjena-areumdabda._2025-05-24.jpg","넌 언제나 아름답다."],

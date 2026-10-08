@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+<channel>
+  <title>사진가 장정대 JUNEssay</title>
+  <link>https://june5355.github.io/</link>
+  <description>사진가 장정대의 사진 아카이브 — 새로 올린 사진 글</description>
+  <language>ko</language>
+  <lastBuildDate>Thu, 08 Oct 2026 09:52:43 GMT</lastBuildDate>
+  <atom:link href="https://june5355.github.io/rss.xml" rel="self" type="application/rss+xml"/>
+  <item>
+    <title>세상 밖의 인연</title>
+    <link>https://june5355.github.io/snap/snap_sesang-bakkui-inyeon_2024-05-09.html</link>
+    <guid isPermaLink="true">https://june5355.github.io/snap/snap_sesang-bakkui-inyeon_2024-05-09.html</guid>
+    <pubDate>Thu, 08 Oct 2026 09:52:43 GMT</pubDate>
+    <description>힘들고 그만두고 싶을 때는 아무 생각도 안 하는 편이 낫다. 그저 시간이 지나가기를 기다리는 것이다.</description>
+  </item>
+</channel>
+</rss>
