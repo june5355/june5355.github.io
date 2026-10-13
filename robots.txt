@@ -1,4 +1,11 @@
 User-agent: *
 Allow: /
 
+# 썸네일(작은 사진)은 구글 이미지 검색에 올리지 않는다 → 원본 사진이 그 글 페이지와 연결되도록
+# (이 그룹에는 Googlebot-Image 만 해당하고, 일반 검색 크롤러는 영향을 받지 않는다)
+User-agent: Googlebot-Image
+Disallow: /snap/thumb/
+Disallow: /scenery/thumb/
+Disallow: /abstract/thumb/
+
 Sitemap: https://june5355.github.io/sitemap.xml

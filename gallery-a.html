@@ -262,9 +262,13 @@
       'scenery/image/scenery_haneuljeongwon_2023-12-23.jpg',
       'snap/image/snap_gaeul-bich_2010-11-13.jpg',
       'snap/image/snap_sesang-bakkui-inyeon_2024-05-09.jpg',
+      'snap/image/snap_gil_2009-07-11.jpg',
     ];
     // 파일명 공백 등 안전하게 인코딩
     let images = IMAGES.map(f => f.split('/').map(encodeURIComponent).join('/'));
+    // 타일(작은 그림)은 썸네일 파일을 쓰고, 클릭해 열리는 라이트박스만 원본을 쓴다.
+    // (구글 이미지 검색이 원본 사진을 이 갤러리가 아니라 그 글 페이지와 연결하도록). 폴더 선택 모드의 blob 주소는 그대로 둔다.
+    const thumbOf = src => src.replace(/^(snap|scenery|abstract)\/image\/(.+)\.[A-Za-z0-9]+$/, '$1/thumb/$2.jpg');
     let tiles = [];
     let offsetX = 0, offsetY = 0, targetX = 0, targetY = 0;
     let velocityX = 0, velocityY = 0;
@@ -470,7 +474,8 @@
               el.style.top = baseY + 'px';
 
               const img = document.createElement('img');
-              img.src = images[idx];
+              img.src = thumbOf(images[idx]);
+              img.onerror = () => { img.onerror = null; img.src = images[idx]; }; // 썸네일이 없으면 원본으로
               img.alt = '';
               img.loading = 'lazy';
               img.draggable = false;
