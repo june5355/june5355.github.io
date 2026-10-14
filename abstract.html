@@ -157,11 +157,12 @@
     overflow: hidden; flex-shrink: 0; border: 1px solid var(--line);
   }
   .about-photo img{ width:100%; height:100%; object-fit: cover; display:block; }
+  .about-photo a{ display:block; width:100%; height:100%; }
 
   /* ================= BREADCRUMB ================= */
   .breadcrumb{
-    padding: clamp(1px, 3vw, 4px) 0 2px;
-    font-size: 0.92rem; font-weight: 700; color: var(--ink);
+    padding: 0;
+    font-size: 1rem; font-weight: 400; color: var(--ink-soft);
   }
   .breadcrumb a:hover{ color: var(--blue); }
   .breadcrumb .sep{ color: var(--ink-faint); font-weight: 400; margin: 0 6px; }
@@ -435,7 +436,8 @@
       </div>
       <div class="about-photo">
         <a href="https://blog.naver.com/jd_photographer" target="_blank" rel="noopener noreferrer" title="블로그로 이동" aria-label="JUN 블로그 새 창으로 열기">
-         <img src="abstract/image/profile.png" alt="사진작가 JUN 프로필 사진">
+          <img src="abstract/image/profile.png" alt="사진작가 JUN 프로필 사진">
+        </a>
       </div>
     </div>
   </section>
