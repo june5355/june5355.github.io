@@ -2,13 +2,12 @@
 <html lang="ko">
 <head>
   <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
-  <title>GALLERY A_ Photo Total | REPUBLIC OF KOREA photographer JEONGDAE JANG archive</title>
-  <meta name="description" content="1990년부터 한국의 풍경과 일상을 기록해 온 사진가 장정대의 개인 홈페이지입니다. 서정적인 시선이 담긴 사진 갤러리와 작품 아카이브를 만나보세요.">
-  <meta name="keywords" content="장정대, 사진가 장정대, 한국 사진가, 사진작가, 한국 사진작가, 개인 사진전, 거리 사진, 스냅 사진, 풍경 사진, 추상 사진, 사진 갤러리, 사진 아카이브">  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>GALLERY A_ 전체 사진 | 사진가 장정대 JUNEssay</title>
+  <meta name="description" content="사진가 장정대의 스냅·풍경·추상 사진을 한눈에 둘러보는 인터랙티브 갤러리. 드래그로 탐색하고, 사진을 누르면 크게 볼 수 있습니다.">
   <meta property="og:type" content="website">
-  <meta property="og:title" content="사진가 장정대 공식 홈페이지">
-  <meta property="og:description" content="1990년부터 기록해 온 한국 거리 사진가 장정대의 사진 아카이브">
+  <meta property="og:title" content="GALLERY A_ 전체 사진 | 사진가 장정대 JUNEssay">
+  <meta property="og:description" content="사진가 장정대의 스냅·풍경·추상 사진을 한눈에 둘러보는 인터랙티브 갤러리. 드래그로 탐색하고, 사진을 누르면 크게 볼 수 있습니다.">
   <style>
     @import url('https://fonts.googleapis.com/css2?family=DM+Sans:wght@500;600;700&display=swap');
     * { margin:0; padding:0; box-sizing:border-box; -webkit-user-select:none; user-select:none; }
@@ -160,9 +159,15 @@
       white-space: nowrap;
       text-shadow: 0 1px 3px rgba(0, 0, 0, 0.6);
     }
-  </style>
+    .sr-only{ position:absolute !important; width:1px; height:1px; padding:0; margin:-1px; overflow:hidden; clip:rect(0,0,0,0); white-space:nowrap; border:0; }
+</style>
+  <link rel="icon" href="favicon.ico" sizes="any">
+  <link rel="apple-touch-icon" href="apple-touch-icon.png">
+  <meta property="og:site_name" content="JUNEssay">
+  <meta property="og:locale" content="ko_KR">
 </head>
 <body>
+  <h1 class="sr-only">GALLERY A_ — 사진가 장정대 전체 사진 모음</h1>
   <nav class="nav">
     <a class="nav-logo" href="index.html" style="text-decoration:none;color:inherit;">
       <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2">
@@ -263,6 +268,28 @@
       'snap/image/snap_gaeul-bich_2010-11-13.jpg',
       'snap/image/snap_sesang-bakkui-inyeon_2024-05-09.jpg',
       'snap/image/snap_gil_2009-07-11.jpg',
+      'snap/image/snap_gieogeul-geodneun-sigan_2009-10-31.jpg',
+      'snap/image/snap_gwageoreul-geodda._2026-01-31.jpg',
+      'snap/image/snap_gyedong-deurama_2026-02-21.jpg',
+      'snap/image/snap_munraedong-neujeun-toegeungil_2025-11-08.jpg',
+      'snap/image/snap_seouleun-chubda._2025-12-25.jpg',
+      'snap/image/snap_siganui-byeoghwa_1991-01-15.jpg',
+      'scenery/image/scenery_35-seongbuggu_2026-09-16.jpg',
+      'scenery/image/scenery_bomnali-jamsi-swineun-nal_2025-04-12.jpg',
+      'scenery/image/scenery_bunhongbich-seolreim_2026-04-01.jpg',
+      'scenery/image/scenery_daemuuidoui-nagjo_2024-09-06.jpg',
+      'scenery/image/scenery_jeongsange-seoda_2024-10-19.jpg',
+      'scenery/image/scenery_munsubong-jeonmangdae_2024-11-17.jpg',
+      'scenery/image/scenery_salmi-areumdaunga_2024-08-24.jpg',
+      'scenery/image/scenery_toegeungil_2025-03-08.jpg',
+      'abstract/image/abstract_annyeong-hannamdong-daldongne_2007-05-02.jpg',
+      'abstract/image/abstract_bi-naerineun-jirisan_2007-03-24.jpg',
+      'abstract/image/abstract_bunhongbich-usan_2008-07-25.jpg',
+      'abstract/image/abstract_gaeulbich-jeongdonggil_2009-10-31.jpg',
+      'abstract/image/abstract_gileul-geodda._2025-05-05.jpg',
+      'abstract/image/abstract_jogeum-neuryeodo-gwaenchanha_2024-06-03.jpg',
+      'abstract/image/abstract_pocheonui-ohu_2007-12-31.jpg',
+      'abstract/image/abstract_yeonaeui-jeongseog_2024-06-06.jpg',
     ];
     // 파일명 공백 등 안전하게 인코딩
     let images = IMAGES.map(f => f.split('/').map(encodeURIComponent).join('/'));
