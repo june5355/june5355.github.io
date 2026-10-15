@@ -450,8 +450,19 @@
     function startGallery() {
       startScreen.classList.add('hidden');
       createTiles();
-      targetX = -BLOCK_W * 0.08;
-      targetY = -BLOCK_H * 0.06;
+      if (window.innerWidth <= 860 && tiles.length) {
+        // 모바일 첫 화면: 블록 중앙에 가장 가까운 사진이 화면 가운데에 오도록 시작 위치를 잡는다 (PC는 기존 값 그대로)
+        let best = tiles[0], bd = Infinity;
+        for (const t of tiles) {
+          const d = Math.hypot(t.baseX + t.baseW / 2 - BLOCK_W / 2, t.baseY + t.baseH / 2 - BLOCK_H / 2);
+          if (d < bd) { bd = d; best = t; }
+        }
+        targetX = window.innerWidth / 2 - (best.baseX + best.baseW / 2);
+        targetY = window.innerHeight / 2 - (best.baseY + best.baseH / 2);
+      } else {
+        targetX = -BLOCK_W * 0.08;
+        targetY = -BLOCK_H * 0.06;
+      }
       offsetX = targetX;
       offsetY = targetY;
       hint.classList.add('show');
