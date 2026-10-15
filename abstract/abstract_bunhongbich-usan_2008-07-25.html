@@ -191,11 +191,12 @@
   .lightbox{
     position: fixed; inset:0; background: rgba(6,6,6,0.92);
     display:none; align-items:center; justify-content:center;
-    z-index: 100; padding: 24px; cursor: zoom-out;
+    z-index: 100; padding: 72px 24px 24px; cursor: zoom-out;
     overflow: auto;
   }
   .lightbox.open{ display:flex; }
   .lightbox.zoomed-view{ align-items: flex-start; justify-content: flex-start; }
+  .lightbox.zoomed-view img{ margin: auto; }
   .lightbox img{
     max-width: 100%; max-height: 100%;
     width:auto; height:auto;
@@ -208,7 +209,7 @@
   .lightbox img.show{ filter: blur(0); opacity: 1; }
   .lightbox img.zoomed{ max-width: none; max-height: none; cursor: zoom-out; }
   .lightbox-close{
-    position:absolute; top:20px; right:28px;
+    position:fixed; top:16px; left:50%; transform:translateX(-50%);
     width:40px; height:40px;
     color: var(--ink); font-size:1.8rem; line-height:1;
     background:none; border:1px solid var(--line); border-radius:50%;
@@ -220,7 +221,7 @@
 
   .essay h2{ font-family: var(--sans); font-weight: 700; font-size: clamp(1.05rem, 2vw, 1.2rem); color: var(--ink); margin-bottom: 14px; }
   .essay h2 a:hover{ color: var(--blue); }
-  .essay p{ font-size: 0.95rem; line-height: 1.4; }
+  .essay p{ font-size: 0.95rem; line-height: 1.28; }
   .essay p + p{ margin-top: 16px; }
 
   .keywords{
@@ -299,14 +300,23 @@
   .footer-nav a:hover{ color: var(--ink); }
 
   @media (max-width: 860px){
-    .hero{ grid-template-columns: 1fr; text-align: left; }
-    .hero-center, .hero-right{ text-align: left; }
+    .hero{ grid-template-columns: minmax(0, 1fr); text-align: center; }
+    .hero-left, .hero-center, .hero-right{ text-align: center; }
+    /* 모바일 히어로: 글자 크기를 화면 폭에 맞춰 줄이고 겹침 요소 해제 (PC 값은 min()의 앞쪽 값으로 그대로 유지) */
+    .hero-left .credit::after{ transform: none; }
+    .hero-center .word-june{ font-size: min(98pt, 22vw); }
+    .hero-center .word-sub{ font-size: min(26pt, 5.8vw); margin-top: max(-28px, -3vw); }
+    .hero-right .vol{ font-size: min(15pt, 4.2vw); line-height: 1.2; transform: none; }
+    .hero-right .vol-num{ font-size: min(45pt, 12vw); }
     .barcode{ justify-content: flex-start; }
     .about-row{ grid-template-columns: 1fr; }
+    .about-welcome{ line-height: 1.3; margin-bottom: 8px; }
     .about-photo{ width: 110px; height: 110px; }
-    .entry{ grid-template-columns: 1fr; }
+    .entry{ grid-template-columns: minmax(0, 1fr); }
+    .meta dd{ overflow-wrap: anywhere; }
     .thumb-row{ grid-template-columns: repeat(4, 1fr); }
     .topbar{ flex-direction: column; align-items: flex-start; gap: 10px; }
+    .topnav{ flex-wrap: wrap; gap: 6px 20px; }
   }
   @media (max-width: 480px){
     .thumb-row{ grid-template-columns: repeat(3, 1fr); }

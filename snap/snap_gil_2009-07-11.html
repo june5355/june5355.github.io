@@ -4,10 +4,10 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>길 — 남삼 순환도로 스냅 사진 | 사진가 장정대 JUNEssay</title>
-<meta name="description" content="남삼 순환도로에서 촬영한 스냅 사진. 어둑한 도로가 나무 사이로 굽이쳐 이어지고, 그 위로 버스 한 대가 불빛을 끌며 지나간다. 서울 남산 순환도로에서 1/6초의 느린 셔터로 담은 스냅 사진이다. 멈춰 있는 길과 …">
+<meta name="description" content="남삼 순환도로에서 촬영한 스냅 사진. 어둑한 도로가 나무 사이로 굽이쳐 이어지고, 그 위로 버스 한 대가 불빛을 끌며 지나간다. 인생은 선택의 연속이다. 그래서 인생은 어렵다고 한다. 당신의 인생에 얼마나 많은 I…">
 <meta property="og:type" content="article">
 <meta property="og:title" content="길 — 남삼 순환도로">
-<meta property="og:description" content="남삼 순환도로에서 촬영한 스냅 사진. 어둑한 도로가 나무 사이로 굽이쳐 이어지고, 그 위로 버스 한 대가 불빛을 끌며 지나간다. 서울 남산 순환도로에서 1/6초의 느린 셔터로 담은 스냅 사진이다. 멈춰 있는 길과 …">
+<meta property="og:description" content="남삼 순환도로에서 촬영한 스냅 사진. 어둑한 도로가 나무 사이로 굽이쳐 이어지고, 그 위로 버스 한 대가 불빛을 끌며 지나간다. 인생은 선택의 연속이다. 그래서 인생은 어렵다고 한다. 당신의 인생에 얼마나 많은 I…">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link rel="stylesheet" as="style" crossorigin href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/variable/pretendardvariable.css" />
@@ -190,11 +190,12 @@
   .lightbox{
     position: fixed; inset:0; background: rgba(6,6,6,0.92);
     display:none; align-items:center; justify-content:center;
-    z-index: 100; padding: 24px; cursor: zoom-out;
+    z-index: 100; padding: 72px 24px 24px; cursor: zoom-out;
     overflow: auto;
   }
   .lightbox.open{ display:flex; }
   .lightbox.zoomed-view{ align-items: flex-start; justify-content: flex-start; }
+  .lightbox.zoomed-view img{ margin: auto; }
   .lightbox img{
     max-width: 100%; max-height: 100%;
     width:auto; height:auto;
@@ -207,7 +208,7 @@
   .lightbox img.show{ filter: blur(0); opacity: 1; }
   .lightbox img.zoomed{ max-width: none; max-height: none; cursor: zoom-out; }
   .lightbox-close{
-    position:absolute; top:20px; right:28px;
+    position:fixed; top:16px; left:50%; transform:translateX(-50%);
     width:40px; height:40px;
     color: var(--ink); font-size:1.8rem; line-height:1;
     background:none; border:1px solid var(--line); border-radius:50%;
@@ -298,14 +299,23 @@
   .footer-nav a:hover{ color: var(--ink); }
 
   @media (max-width: 860px){
-    .hero{ grid-template-columns: 1fr; text-align: left; }
-    .hero-center, .hero-right{ text-align: left; }
+    .hero{ grid-template-columns: minmax(0, 1fr); text-align: center; }
+    .hero-left, .hero-center, .hero-right{ text-align: center; }
+    /* 모바일 히어로: 글자 크기를 화면 폭에 맞춰 줄이고 겹침 요소 해제 (PC 값은 min()의 앞쪽 값으로 그대로 유지) */
+    .hero-left .credit::after{ transform: none; }
+    .hero-center .word-june{ font-size: min(98pt, 22vw); }
+    .hero-center .word-sub{ font-size: min(26pt, 5.8vw); margin-top: max(-28px, -3vw); }
+    .hero-right .vol{ font-size: min(15pt, 4.2vw); line-height: 1.2; transform: none; }
+    .hero-right .vol-num{ font-size: min(45pt, 12vw); }
     .barcode{ justify-content: flex-start; }
     .about-row{ grid-template-columns: 1fr; }
+    .about-welcome{ line-height: 1.3; margin-bottom: 8px; }
     .about-photo{ width: 110px; height: 110px; }
-    .entry{ grid-template-columns: 1fr; }
+    .entry{ grid-template-columns: minmax(0, 1fr); }
+    .meta dd{ overflow-wrap: anywhere; }
     .thumb-row{ grid-template-columns: repeat(4, 1fr); }
     .topbar{ flex-direction: column; align-items: flex-start; gap: 10px; }
+    .topnav{ flex-wrap: wrap; gap: 6px 20px; }
   }
   @media (max-width: 480px){
     .thumb-row{ grid-template-columns: repeat(3, 1fr); }
@@ -356,12 +366,12 @@
   <link rel="icon" href="../favicon.ico" sizes="any">
   <link rel="apple-touch-icon" href="../apple-touch-icon.png">
 <meta property="article:published_time" content="2026-10-13">
-<meta property="article:modified_time" content="2026-10-14">
+<meta property="article:modified_time" content="2026-10-15">
 <link rel="canonical" href="https://june5355.github.io/snap/snap_gil_2009-07-11.html">
 <meta property="og:url" content="https://june5355.github.io/snap/snap_gil_2009-07-11.html">
 <meta property="og:image" content="https://june5355.github.io/snap/image/snap_gil_2009-07-11.jpg">
 <meta property="og:image:alt" content="길 — 스냅 사진, 남삼 순환도로">
-<script type="application/ld+json">{"@context":"https://schema.org","@type":"ImageObject","name":"길","description":"남삼 순환도로에서 촬영한 스냅 사진. 어둑한 도로가 나무 사이로 굽이쳐 이어지고, 그 위로 버스 한 대가 불빛을 끌며 지나간다. 서울 남산 순환도로에서 1/6초의 느린 셔터로 담은 스냅 사진이다. 멈춰 있는 길과 …","contentUrl":"https://june5355.github.io/snap/image/snap_gil_2009-07-11.jpg","mainEntityOfPage":"https://june5355.github.io/snap/snap_gil_2009-07-11.html","creator":{"@type":"Person","name":"JEONGDAE JANG"},"creditText":"JEONGDAE JANG","copyrightNotice":"Copyright © JEONGDAE JANG","dateCreated":"2009-07-11","datePublished":"2026-10-13","dateModified":"2026-10-14","contentLocation":{"@type":"Place","name":"남삼 순환도로"}}</script>
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"ImageObject","name":"길","description":"남삼 순환도로에서 촬영한 스냅 사진. 어둑한 도로가 나무 사이로 굽이쳐 이어지고, 그 위로 버스 한 대가 불빛을 끌며 지나간다. 인생은 선택의 연속이다. 그래서 인생은 어렵다고 한다. 당신의 인생에 얼마나 많은 I…","contentUrl":"https://june5355.github.io/snap/image/snap_gil_2009-07-11.jpg","mainEntityOfPage":"https://june5355.github.io/snap/snap_gil_2009-07-11.html","creator":{"@type":"Person","name":"JEONGDAE JANG"},"creditText":"JEONGDAE JANG","copyrightNotice":"Copyright © JEONGDAE JANG","dateCreated":"2009-07-11","datePublished":"2026-10-13","dateModified":"2026-10-15","contentLocation":{"@type":"Place","name":"남삼 순환도로"}}</script>
 </head>
 <body>
 
@@ -464,7 +474,7 @@
 
       <div class="essay">
         <h1 style="font-family:var(--sans);font-weight:700;font-size:clamp(1.05rem,2vw,1.2rem);color:var(--ink);margin-bottom:14px"><span class="entry-title-plain">길</span></h1>
-        <p><span style="font-size: 0.92rem;">어둑한 도로가 나무 사이로 굽이쳐 이어지고, 그 위로 버스 한 대가 불빛을 끌며 지나간다.</span></p>        <p>서울 남산 순환도로에서 1/6초의 느린 셔터로 담은 스냅 사진이다. 멈춰 있는 길과 달려가는 버스의 흐릿한 불빛이 한 장면에 겹쳤다.</p>        <p>인생은 선택의 연속이다. 그래서 인생은 어렵다고 한다. 당신의 인생에 얼마나 많은 IF가 있었나요?</p>
+        <p>어둑한 도로가 나무 사이로 굽이쳐 이어지고, 그 위로 버스 한 대가 불빛을 끌며 지나간다.</p>        <p>인생은 선택의 연속이다. 그래서 인생은 어렵다고 한다. 당신의 인생에 얼마나 많은 IF가 있었나요?</p>        <p>서울 남산 순환도로에서 1/6초의 느린 셔터로 담은 스냅 사진이다. 멈춰 있는 길과 달려가는 버스의 흐릿한 불빛이 한 장면에 겹쳤다.</p>
       </div>
 
       <p class="keywords">키워드 / #남산 #남산순환도로 #서울 #길 #스냅사진 #인생 #선택 #슬로우셔터 #삼성테크윈</p>
