@@ -174,11 +174,12 @@
   .lightbox{
     position: fixed; inset:0; background: rgba(6,6,6,0.92);
     display:none; align-items:center; justify-content:center;
-    z-index: 100; padding: 24px; cursor: zoom-out;
+    z-index: 100; padding: 72px 24px 24px; cursor: zoom-out;
     overflow: auto;
   }
   .lightbox.open{ display:flex; }
   .lightbox.zoomed-view{ align-items: flex-start; justify-content: flex-start; }
+  .lightbox.zoomed-view img{ margin: auto; }
   .lightbox img{
     max-width: 100%; max-height: 100%;
     width:auto; height:auto;
@@ -191,7 +192,7 @@
   .lightbox img.show{ filter: blur(0); opacity: 1; }
   .lightbox img.zoomed{ max-width: none; max-height: none; cursor: zoom-out; }
   .lightbox-close{
-    position:absolute; top:20px; right:28px;
+    position:fixed; top:16px; left:50%; transform:translateX(-50%);
     width:40px; height:40px;
     color: var(--ink); font-size:1.8rem; line-height:1;
     background:none; border:1px solid var(--line); border-radius:50%;
@@ -269,14 +270,24 @@
   .footer-nav a:hover{ color: var(--ink); }
 
   @media (max-width: 860px){
-    .hero{ grid-template-columns: 1fr; text-align: left; }
-    .hero-center, .hero-right{ text-align: left; }
+    .hero{ grid-template-columns: minmax(0, 1fr); text-align: center; }
+    .hero-left, .hero-center, .hero-right{ text-align: center; }
+    /* 모바일 히어로: 글자 크기를 화면 폭에 맞춰 줄이고 겹침 요소 해제 (PC 값은 min()의 앞쪽 값으로 그대로 유지) */
+    .header-social{ position: static; justify-content: center; }
+    .hero-left .credit::after{ transform: none; }
+    .hero-center .word-june{ font-size: min(98pt, 22vw); }
+    .hero-center .word-sub{ font-size: min(26pt, 5.8vw); margin-top: max(-28px, -3vw); }
+    .hero-right .vol{ font-size: min(15pt, 4.2vw); line-height: 1.2; transform: none; }
+    .hero-right .vol-num{ font-size: min(45pt, 12vw); }
+    .nav-block--gallery{ transform: none; }
     .barcode{ justify-content: flex-start; }
     .navrow{ grid-template-columns: 1fr; }
     .navrow .vrule{ display:none; }
-    .entry{ grid-template-columns: 1fr; }
+    .entry{ grid-template-columns: minmax(0, 1fr); }
+    .meta dd{ overflow-wrap: anywhere; }
     .thumb-row{ grid-template-columns: repeat(4, 1fr); }
     .topbar{ flex-direction: column; align-items: flex-start; gap: 10px; }
+    .topnav{ flex-wrap: wrap; gap: 6px 20px; }
   }
   @media (max-width: 480px){
     .thumb-row{ grid-template-columns: repeat(3, 1fr); }
@@ -465,7 +476,7 @@
   </p>
   <hr class="rule">
 
-                                                                                              <main class="entry">
+                                                                                            <main class="entry">
     <div class="entry-media">
       <button type="button" class="media-trigger" aria-label="사진 크게 보기 (라이트박스 열기)">
         <img src="snap/image/snap_gil_2009-07-11.jpg" alt="길 — 스냅 사진, 남삼 순환도로">
@@ -473,14 +484,14 @@
     </div>
 
     <div>
-      <p class="entry-tag">#SNAP 길 2026-10-13</p>
+      <p class="entry-tag">#SNAP 길 2009-07-11</p>
 
       <div class="essay">
         <h2><a href="snap/snap_gil_2009-07-11.html">길</a></h2>
-        <p><span style="font-size: 0.92rem;">어둑한 도로가 나무 사이로 굽이쳐 이어지고, 그 위로 버스 한 대가 불빛을 끌며 지나간다.</span></p>        <p>서울 남산 순환도로에서 1/6초의 느린 셔터로 담은 스냅 사진이다. 멈춰 있는 길과 달려가는 버스의 흐릿한 불빛이 한 장면에 겹쳤다.</p>        <p>인생은 선택의 연속이다. 그래서 인생은 어렵다고 한다. 당신의 인생에 얼마나 많은 IF가 있었나요?</p>
+        <p>인생은 선택의 연속이다. 그래서 인생은 어렵다고 한다...</p>        <p>당신의 인생에 얼마나 많은 IF가 있었나요?</p>        <p>남산 순화도로에서&nbsp;</p>
       </div>
 
-      <p class="keywords">키워드 / #남산 #남산순환도로 #서울 #길 #스냅사진 #인생 #선택 #슬로우셔터 #삼성테크윈</p>
+      <p class="keywords">키워드 / #남산 #순환도로</p>
 
       <dl class="meta">
         <dt>촬영일 :</dt><dd>2009-07-11</dd>
