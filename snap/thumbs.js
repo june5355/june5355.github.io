@@ -8,7 +8,7 @@ window.THUMBS = { base: document.currentScript.src, items: [
   ["snap_toegeun-eobsneun-salm_2025-11-08.html","thumb/snap_toegeun-eobsneun-salm_2025-11-08.jpg","퇴근 없는 삶","image/snap_toegeun-eobsneun-salm_2025-11-08.jpg"],
   ["snap_neomeoya-hal-gil_2025-07-06.html","thumb/snap_neomeoya-hal-gil_2025-07-06.jpg","넘어야 할 길","image/snap_neomeoya-hal-gil_2025-07-06.jpg"],
   ["snap_analrogeuui-gieog_2026-07-15.html","thumb/snap_analrogeuui-gieog_2026-07-15.jpg","아날로그의 기억","image/snap_analrogeuui-gieog_2026-07-15.jpg"],
-  ["snap_sigan-girog_2016-04-02.html","thumb/snap_sigan-girog_2016-04-02.jpg","시간 기록","image/snap_sigan-girog_2016-04-02.jpg"],
+  ["snap_sigan-girog_2016-04-02.html","thumb/snap_sigan-girog_2016-04-02.jpg","지나간 시간의 기록","image/snap_sigan-girog_2016-04-02.jpg"],
   ["snap_jinagan-siganege-anbureul-mudda._2025-08-02.html","thumb/snap_jinagan-siganege-anbureul-mudda._2025-08-02.jpg","지나간 시간에게 안부를 묻다.","image/snap_jinagan-siganege-anbureul-mudda._2025-08-02.jpg"],
   ["snap_gyeoul-eoneunal_2022-12-13.html","thumb/snap_gyeoul-eoneunal_2022-12-13.jpg","겨울 어느날","image/snap_gyeoul-eoneunal_2022-12-13.jpg"],
   ["snap_gyejeolui-achim_2026-03-24.html","thumb/snap_gyejeolui-achim_2026-03-24.jpg","계절의 아침","image/snap_gyejeolui-achim_2026-03-24.jpg"],
