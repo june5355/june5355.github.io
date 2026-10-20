@@ -1,5 +1,6 @@
 /* abstract 썸네일 목록 (맨 앞이 최신). generate_post.py 가 관리하는 파일입니다. */
 window.THUMBS = { base: document.currentScript.src, items: [
+  ["abstract_gieogui-nagsangil_2015-08-15.html","thumb/abstract_gieogui-nagsangil_2015-08-15.jpg","기억의 낙산길","image/abstract_gieogui-nagsangil_2015-08-15.png"],
   ["abstract_hwinalrida_2007-01-06.html","thumb/abstract_hwinalrida_2007-01-06.jpg","휘날리다~","image/abstract_hwinalrida_2007-01-06.jpg"],
   ["abstract_gileul-geodda._2025-05-05.html","thumb/abstract_gileul-geodda._2025-05-05.jpg","길을 걷다.","image/abstract_gileul-geodda._2025-05-05.jpg"],
   ["abstract_yeonaeui-jeongseog_2024-06-06.html","thumb/abstract_yeonaeui-jeongseog_2024-06-06.jpg","연애의 정석","image/abstract_yeonaeui-jeongseog_2024-06-06.jpg"],
